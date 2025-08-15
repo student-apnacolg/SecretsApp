@@ -68,6 +68,11 @@ function signToken(user) {
   {expiresIn: '7d'})
 }
 
+function noCache(req, res, next) {
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private')
+  next()
+}
+
 function requireAuth(req, res, next) {
   const token = req.cookies?.token;
   if (!token) {
@@ -129,7 +134,7 @@ app.post("/login", async (req, res) => {
     if (!foundUser) {
       return res.send("No account found with this email")
     }
-    const passMatch = await bcrypt.compare(req.body.password, foundUser.password)
+    const passMatch = await bcrypt.compare(password, foundUser.password)
     if (!passMatch) {
       return res.send("Invalid email or password")
     }
@@ -142,11 +147,11 @@ app.post("/login", async (req, res) => {
   }
 })
 
-app.get('/submit', requireAuth, (req, res) => {
+app.get('/submit', requireAuth, noCache, (req, res) => {
   res.render('submit', {user: req.user})
 })
 
-app.post('/submit', requireAuth, async (req, res) => {
+app.post('/submit', requireAuth, noCache, async (req, res) => {
   try {
     const { secret } = req.body
     if (!secret || !secret.trim()) {
@@ -162,7 +167,7 @@ app.post('/submit', requireAuth, async (req, res) => {
   }
 })
 
-app.get('/secrets', requireAuth, async (req, res) => {
+app.get('/secrets', requireAuth, noCache, async (req, res) => {
   try {
     const userWithSecret = await User.find(
       {secrets: {$exists: true, $ne: []} },
@@ -177,7 +182,7 @@ app.get('/secrets', requireAuth, async (req, res) => {
   }
 })
 
-app.post("/delete", requireAuth, async (req, res) => {
+app.post("/delete", requireAuth, noCache, async (req, res) => {
   try {
     const secretToDelete = req.body.secret
     const userId = req.user.id;

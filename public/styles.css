@@ -189,16 +189,16 @@ form input:focus {
   cursor: pointer;
   transition: .2s;
   font-weight: 500;
-  color: #2b7fff;
+  color: white;
   font-size: 1.2rem;
   border-radius: .5rem;
-  background-color: white;
+  background-color: #2B7FFF;
   border: 2px solid #2B7FFF;
 }
 
 .actions button:hover {
   color: white;
-  background-color: #2B7FFF;
+  background-color: #1447E6;
 }
 
 .actions span {
@@ -316,6 +316,32 @@ form input:focus {
   background: none;
   color: #ff4d4f;
 }
+
+#submitForm label p {
+  font-size: 1.2rem;
+}
+
+#submitForm textarea {
+  outline: none;
+  padding: .7rem;
+  resize: vertical;
+  font-size: .9rem;
+  border-radius: .5rem;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+#submitForm textarea:focus {
+  border-color: #66afe9;
+  box-shadow: 0 0 5px rgba(102, 175, 233, .5);
+}
+
+#submitForm textarea::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+
 
 @media (max-width: 425px) {
   .passLabel input {

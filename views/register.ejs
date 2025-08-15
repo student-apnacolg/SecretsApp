@@ -1,0 +1,29 @@
+<%- include('partials/header') %>
+
+  <section class="formContainer">
+    <h2>Register</h2>
+    <form action="/register" method="POST" id="registerForm">
+      <label>
+        <p>Name</p>
+        <input type="text" name="name" required placeholder="Your Full Name">
+      </label>
+      <label>
+        <p>Email</p>
+        <input type="email" name="email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" placeholder="you@example.com">
+      </label>
+      <label class="passLabel">
+        <p>Password</p>
+        <input type="password" name="password" id="password" minlength="6" maxlength="25"
+          placeholder="Min 6 chars , 1 upper , 1 lower & 1 num"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$" required>
+          <span class="togglePass" onclick="togglePassword()"><i id="toggleIcon" class="fa-solid fa-eye-slash"></i></span>
+      </label>
+      <div class="actions">
+        <button type="submit">Register</button>
+        <span>Already have an account?
+          <a href="/login">Login</a></span>
+      </div>
+    </form>
+  </section>
+
+  <%- include('partials/footer') %>

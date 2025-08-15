@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+
+<section class="formContainer">
+  <h2>Share a Secret</h2>
+  <form action="/submit" method="POST" id="submitForm">
+    <label>
+      <p>Your Secret</p>
+      <textarea name="secret" rows="3" placeholder="type anonymous secret" required></textarea>
+    </label>
+    <div class="actions">
+      <button type="submit">Submit</button>
+      <span><a href="/secrets">Back to Secrets</a></span>
+    </div>
+  </form>
+</section>
+
+<%- include('partials/footer') %>

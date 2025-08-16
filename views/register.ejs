@@ -11,13 +11,22 @@
         <p>Email</p>
         <input type="email" name="email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" placeholder="you@example.com">
       </label>
+      <div class="">
       <label class="passLabel">
         <p>Password</p>
-        <input type="password" name="password" id="password" minlength="6" maxlength="25"
-          placeholder="Min 6 chars , 1 upper , 1 lower & 1 num"
-          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$" required>
-          <span class="togglePass" onclick="togglePassword()"><i id="toggleIcon" class="fa-solid fa-eye-slash"></i></span>
+        <input type="password" name="password" id="password" placeholder="Enter your password" required>
+        <span class="togglePass" onclick="togglePassword()"><i id="toggleIcon" class="fa-solid fa-eye-slash"></i></span>
       </label>
+      <div class="passHint">
+        <ul>
+          <li id="lower" class="invalid"><i class="fa-solid fa-xmark"></i> Lowercase</li>
+          <li id="upper" class="invalid"><i class="fa-solid fa-xmark"></i> Uppercase</li>
+          <li id="number" class="invalid"><i class="fa-solid fa-xmark"></i> Number</li>
+          <li id="special" class="invalid"><i class="fa-solid fa-xmark"></i> Special character</li>
+          <li id="length" class="invalid"><i class="fa-solid fa-xmark"></i> 6+ characters</li>
+        </ul>
+      </div>
+    </div>
       <div class="actions">
         <button type="submit">Register</button>
         <span>Already have an account?

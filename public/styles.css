@@ -341,13 +341,40 @@ form input:focus {
   font-style: italic;
 }
 
+.passHint {
+  font-size: .85rem;
+  margin-top: .4rem;
+  padding: .75rem 1rem;
+  border-radius: .5rem;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
 
+.passHint ul {
+  margin: 0;
+  gap: .5rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
-@media (max-width: 425px) {
-  .passLabel input {
-    font-size: .75rem;
-  }
-  #toggleIcon {
-    font-size: 1rem;
-  }
+.passHint li i {
+  width: 1rem;
+  text-align: center;
+}
+
+.passHint li {
+  gap: .3rem;
+  display: flex;
+  align-items: center;
+  transition: color .3s;
+}
+
+.passHint li.valid {
+  color: #2A9689;
+}
+
+.passHint li.invalid {
+  color: #FB2C36;
 }

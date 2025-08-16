@@ -27,7 +27,6 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true,
     minlength: 2,
-    maxlength: 20
   },
   email: {
     type: String,
@@ -39,7 +38,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength: 6
+    minlength: 6,
   },
   secrets: [{
     type: String,
@@ -103,13 +102,13 @@ app.get("/login", (req, res) => {
 app.post("/register", async (req, res) => {
   try {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
 
     if (!emailRegex.test(req.body.email)) {
       return res.send("Invalid email format")
     }
     if (!passRegex.test(req.body.password)) {
-      return res.send("Password must be minimum 6 characters, including uppercase, lowercase and a number")      
+      return res.send("Password must be minimum 6 characters, including uppercase, lowercase, number and a special character")
     }
 
     const hashedPassword = await bcrypt.hash(req.body.password, saltRounds)

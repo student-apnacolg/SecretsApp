@@ -9,9 +9,9 @@
       </label>
       <label class="passLabel">
         <p>Password</p>
-        <input type="password" name="password" id="password" minlength="6" maxlength="25"
-          placeholder="Min 6 chars , 1 upper , 1 lower & 1 number"
-          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$" required>
+        <input type="password" name="password" id="password" minlength="6" maxlength="50"
+          placeholder="Min 6 chars , 1 upper , 1 lower, 1 num & 1 special char"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$" required>
         <span class="togglePass" onclick="togglePassword()"><i id="toggleIcon" class="fa-solid fa-eye-slash"></i></span>
       </label>
       <div class="actions">
